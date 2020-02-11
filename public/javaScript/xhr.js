@@ -13,5 +13,5 @@ xhr.onreadystatechange = () => {
     }
   }
 };
-xhr.open('GET', 'url in here', true);
+xhr.open('GET', 'url in here');
 xhr.send();
