@@ -5,7 +5,111 @@
 }
 
 header {
-    text-align: center;
-    padding: 20px 0;
+    display: flex;
     background-color: #2D65C9;
+}
+
+#logo {
+    text-align: center;
+    color: #fff;
+    font: 4vmin Arial;
+    height: 4vmin;
+    font-weight: bold;
+}
+
+#search-container {
+    flex: 0 100%;
+    padding: 1vmin;
+}
+
+#search-input {
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.7;
+    border: none;
+    font-size: 4vmin;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+#search-input:focus {
+    opacity: 1;
+}
+
+main {
+    display: flex;
+    background-color: #888;
+}
+
+#preview {
+    background-color: #fff;
+    text-align: center;
+    font-size: 50vmin;
+}
+
+#details-table {
+    font: 4vmin Arial;
+}
+
+.col-1 {
+    width: 30%;
+    font-weight: bold;
+    color: #800
+}
+
+.col-1, .col-2 {
+    padding: 2vmin;
+}
+
+#suggestion {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 1vmin 1vmin 1vmin #000;
+    padding: 2vmin;
+    border-radius: 2vmin;
+}
+#suggestion li {
+    display: block;
+    text-decoration: none;
+    font: 4vmin Arial;
+    cursor: pointer;
+}
+
+#suggestion li:hover {
+    background-color: burlywood;
+}
+
+#search-input:focus + #suggestion {
+    display: block;
+}
+
+@media (orientation: portrait) {
+    header, main {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    #search-container, #logo, #preview, #details {
+        flex: 0 100%;
+    }
+    #suggestion {
+        width: 100%;
+    }
+}
+@media (orientation:landscape) {
+    header, main {
+        flex-direction: row;
+        align-items: center;
+    }
+    #search-container, #logo {
+        flex: 0 50%;
+    }
+    #suggestion {
+        width: 50%;
+    }
+    #preview {
+        flex: 0 40%;
+    }
+    #details {
+        flex: 0 60%;
+    }
 }
