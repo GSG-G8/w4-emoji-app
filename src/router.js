@@ -1,12 +1,18 @@
-const homehandle = require('./handelers/homehandle');
-const publichandle = require('./handelers/publichandle');
+const path = require('path');
+const searchHandle = require('./handelers/searchHandle');
+const publicHandle = require('./handelers/publichandle');
 
-module.exports = (req, res) => {
-  const endpoint = req.url;
 
-  if (endpoint === '/') {
-    homehandle(res);
-  } else if (endpoint.includes('public')) {
-    publichandle(req, res);
+module.exports = (request, response) => {
+  let endpoint = request.url.split('/').filter((e) => e !== '');
+  if (endpoint.length === 0) endpoint = ['public', 'index.html'];
+  const filePath = path.join(__dirname, '..', ...endpoint);
+  const fileName = endpoint[endpoint.length - 1];
+  const fileExt = fileName.split('.').pop().toLowerCase();
+
+  if (endpoint[0] === 'public') {
+    publicHandle(request, response, filePath, fileExt);
+  } else if (endpoint[0] === 'search') {
+    searchHandle(request, response, endpoint[1]);
   }
 };
