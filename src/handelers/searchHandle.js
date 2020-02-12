@@ -10,11 +10,16 @@ module.exports = (request, response, keywords) => {
       response.writeHead(404, { 'Content-Type': 'application/json' });
       response.end(error);
     } else {
+      let results;
       emojiArray = JSON.parse(file);
-      const search = keywords.split('%20').map((e) => e.toLowerCase());
-      const results = emojiArray.filter((e) => (
-        search.some((k) => e.name.toLowerCase().includes(k))
-      )).slice(0, 10);
+      if (keywords === undefined) {
+        results = emojiArray.slice(0, 10);
+      } else {
+        const search = keywords.split('%20').map((e) => e.toLowerCase());
+        results = emojiArray.filter((e) => (
+          search.some((k) => e.name.toLowerCase().includes(k))
+        )).slice(0, 10);
+      }
 
       response.writeHead(200, { 'Content-Type': 'application/json' });
       response.end(JSON.stringify(results));
