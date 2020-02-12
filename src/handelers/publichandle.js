@@ -1,28 +1,28 @@
 const fs = require('fs');
-const path = require('path');
 
-const ext = {
+const MIME = {
+  txt: 'text/plain',
+  htm: 'text/html',
   html: 'text/html',
-  css: 'text/css',
   js: 'text/javascript',
-  ico: 'image/x-icon',
+  css: 'text/css',
   jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  png: 'image/png',
+  gif: 'image/gif',
+  ico: 'image/x-icon',
+  json: 'image/x-icon',
 };
 
-module.exports = (req, res) => {
-  const endpoint = req.url;
-  const fileName = endpoint.split('/');
-  const fileExt = endpoint.split('.')[1];
-  const filePath = path.join(__dirname, '..', '..', ...fileName);
+
+module.exports = (request, response, filePath, fileExt) => {
   fs.readFile(filePath, (error, file) => {
     if (error) {
-      console.log(`File Name ${fileName[fileName.length - 1]} Error From Server: ${error}`);
-      res.writeHead(500, { 'Conten-Type': 'text/html' });
-      res.end('<h1>500 Error From Server</h1>');
+      response.writeHead(404, { 'Content-Type': 'text/html' });
+      response.end('<h1>Page Not Found !</h1>');
     } else {
-      res.writeHead(200, { 'Content-Type': ext[fileExt] });
-      res.end(file);
+      response.writeHead(200, { 'Content-Type': MIME[fileExt] });
+      response.end(file);
     }
   });
-  console.log(filePath);
 };
