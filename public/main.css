@@ -179,3 +179,13 @@ main {
         flex: 0 70%;
     }
 }
+
+.h1-404{
+    color:black;
+    font-weight:bold;
+    border:2px solid #20ff;
+    padding:20px;
+    margin:20%;
+    text-align:center;
+}
+
