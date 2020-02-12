@@ -17,7 +17,7 @@ module.exports = (request, response) => {
   } else if (endpoint[0] === 'search') {
     searchHandle(request, response, endpoint[1]);
   } else {
-    response.writeHead(500, { 'Conten-Type': 'text/html' });
-    response.end(`<h1 style='color:black; font-weight:bold; border:2px solid #20ff; padding:20px; margin:20%; text-align:center;'> Error From Server  <span style='color:red;'>500</span> <p><a href=\'http://${HOST}:${PORT}\' style='background-color: #2D65C9; padding:5px; border: 1px solid black; border-radius:10px; cursor: pointer; text-decoration: none; color:black;'>back To Home</a></h1>`);
+    response.writeHead(404, { 'Conten-Type': 'text/html' });
+    response.end(`<h1 style='color:black; font-weight:bold; border:2px solid #20ff; padding:20px; margin:20%; text-align:center;'> Error From Server  <span style='color:red;'>404</span> <p><a href='http://${HOST}:${PORT}\' style='background-color: #2D65C9; padding:5px; border: 1px solid black; border-radius:10px; cursor: pointer; text-decoration: none; color:black;'>back To Home</a></h1>`);
   }
 };
