@@ -10,12 +10,12 @@
 <body>
     <header>
         <div id="logo">
-            😀 emojy app
+            <span id="logo-emoji"></span>emoji app
         </div>
         <div id="search-container">
             <input id="search-input" type="search" value="" placeholder="search now">
             <ul id="suggestion">
-                <li>😀 face one </li>
+                <li class="active">😀 face one </li>
                 <li>😀 face one </li>
                 <li>😀 face one </li>
                 <li>😀 face one </li>
@@ -25,33 +25,31 @@
     </header>
     
     <main>
-        <div id="preview">
-            😀
-        </div>
+        <div id="preview">😀</div>
         <div id="details">
             <table id="details-table">
                 <tr>
-                    <td class="col-1">name</td>
-                    <td class="col-2">grinning face</td>
+                    <td class="col-1">Name</td>
+                    <td class="col-2" id="details-name">grinning face</td>
                 </tr>
                 <tr>
-                    <td class="col-1">code</td>
-                    <td class="col-2">1F600</td>
+                    <td class="col-1">Code</td>
+                    <td class="col-2" id="details-code">1F600</td>
                 </tr>
                 <tr>
-                    <td class="col-1">category</td>
-                    <td class="col-2">Smileys & Emotion (face-smiling)</td>
+                    <td class="col-1">Category</td>
+                    <td class="col-2" id="details-category">Smileys & Emotion (face-smiling)</td>
                 </tr>
                 <tr>
-                    <td class="col-1">group</td>
-                    <td class="col-2">Smileys & Emotion</td>
+                    <td class="col-1">Group</td>
+                    <td class="col-2" id="details-group">Smileys & Emotion</td>
                 </tr>
                 <tr>
-                    <td class="col-1">subgroup</td>
-                    <td class="col-2">face-smiling</td>
+                    <td class="col-1">Sub-group</td>
+                    <td class="col-2" id="details-subgroup">face-smiling</td>
                 </tr>
-                
             </table>
+            <button type="button" id="btn-copy">copy</button>
         </div>
         
     </main>
