@@ -18,10 +18,7 @@ module.exports = (request, response) => {
   } else if (endpoint[0] === 'search') {
     searchHandle(request, response, endpoint[1]);
   } else {
-    fs.readFile(path.join(__dirname, '..', 'public', '404.html'), (err, file) => {
-      response.writeHead(404, { 'Content-Type': 'text/html' });
-      
-      response.end(file);
-    });
+    response.writeHead(308, { Location: '/public/404.html' });
+    response.end();
   }
 };
