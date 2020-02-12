@@ -14,6 +14,6 @@ function xhrSend() {
     };
     xhr.open('GET', `/search/${newText}`);
     xhr.send();
-    searchText += newText;
+    searchText = newText;
   }
 }
