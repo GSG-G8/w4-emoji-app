@@ -13,15 +13,12 @@ input.addEventListener('keydown', (evn) => {
       selected = (selected + suggestionsCount - 1) % suggestionsCount;
     }
     //input.value = sugestions[selected].name;
-    renderAutocomplete();
     evn.preventDefault();
   } else if (evn.key === 'Enter') {
     renderDetails(sugestions[selected]);
     evn.preventDefault();
     evn.target.blur();
-    
   }
-  console.log(selected);
 });
 
 input.addEventListener('keyup', () => {
