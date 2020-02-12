@@ -1,10 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-header {
+.header {
     display: flex;
     position: relative;
     background-color: #07a;
@@ -13,7 +13,7 @@ header {
     z-index: 100;
 }
 
-#logo {
+.header__logo {
     text-align: center;
     color: #fff;
     font: 5vmin Arial;
@@ -22,7 +22,7 @@ header {
     font-weight: bold;
 }
 
-#logo::before {
+.header__logo::before {
     content: "😀";
     animation: emoji-animation 6s ease-in-out infinite alternate;
 }
@@ -46,12 +46,12 @@ header {
 }
 
 
-#search-container {
+.header__search {
     flex: 0 100%;
     padding: 2vmin;
 }
 
-#search-input {
+.search__input {
     width: 100%;
     background-color: #fff;
     opacity: 0.7;
@@ -61,16 +61,16 @@ header {
     border-radius: 2em;
     box-shadow: inset .1em .1em .1em #000;
 }
-#search-input:focus {
+.search__input:focus {
     opacity: 1;
 }
 
-main {
+.main {
     display: flex;
     background-color: #ccc;
 }
 
-#preview {
+.main__emoji {
     padding-top: 5vmin;
     background-color: #aaa;
     text-align: center;
@@ -81,12 +81,12 @@ main {
     font-size: 128px;
     line-height: 40vmin;
 }
-#details {
+.main__details {
     margin: 2vmin;
     text-align: center;
 }
 
-#details-table {
+.details__table {
     font: 4vmin Arial;
 }
 
@@ -100,7 +100,7 @@ main {
     padding: 1vmin;
 }
 
-#btn-copy {
+.details__copy {
     color: #fff;
     background-color: #07a;
     background: linear-gradient(#19f, #059);
@@ -111,7 +111,7 @@ main {
     border-radius: 1vmin;
 }
 
-#suggestion {
+.input__ul {
     display: none;
     position: absolute;
     background-color: #fff;
@@ -120,7 +120,7 @@ main {
     border-radius: 4vmin;
 }
 
-#suggestion li {
+.input__li {
     display: block;
     text-decoration: none;
     font: 4vmin Arial;
@@ -128,59 +128,59 @@ main {
     cursor: pointer;
 }
 
-#suggestion li:hover {
+.input__li:hover {
     background-color: #aaa;
 }
 
-#suggestion li.active {
+.input__li.active {
     background-color: #19f;
 }
 
-#search-input:focus + #suggestion {
+.search__input:focus + .input__ul {
     display: block;
 }
 
 @media (orientation: portrait) {
-    header, main {
+    .header, .main {
         flex-direction: column;
         align-items: stretch;
     }
-    #search-container, #logo, #preview, #details {
+    .header__search, .header__logo, .main__emoji, .main__details {
         flex: 0 100%;
     }
-    #suggestion {
+    .input__ul {
         width: 96%;
     }
 
-    #preview {
+    .main__emoji {
         height: 192px;
         line-height: 192px;
     }
 
-    #logo {
+    header__logo {
         padding: 2vmin;
     }
 }
 @media (orientation:landscape) {
-    header, main {
+    .header, .main {
         flex-direction: row;
         align-items: center;
     }
-    #search-container, #logo {
+    .header__search, .header__logo {
         flex: 0 50%;
     }
-    #suggestion {
+    .input__ul {
         width: 48%;
     }
-    #preview {
+    .main__emoji {
         flex: 0 30%;
     }
-    #details {
+    .main__details {
         flex: 0 70%;
     }
 }
 
-.h1-404{
+.h1-404 {
     color:black;
     font-weight:bold;
     border:2px solid #20ff;
