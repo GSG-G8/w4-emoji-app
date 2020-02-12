@@ -1,7 +1,7 @@
 
 let selected = 0;
-const suggestionsCount = 6;
-const sugestions = [];
+let suggestionsCount = 6;
+let sugestions = [];
 
 const input = document.getElementById('search-input');
 
@@ -12,9 +12,10 @@ input.addEventListener('keydown', (evn) => {
     } else {
       selected = (selected + suggestionsCount - 1) % suggestionsCount;
     }
-    input.value = sugestions[selected].name;
+    //input.value = sugestions[selected].name;
     evn.preventDefault();
   } else if (evn.key === 'Enter') {
+    renderDetails(sugestions[selected]);
     evn.preventDefault();
     evn.target.blur();
   }
@@ -24,6 +25,10 @@ input.addEventListener('keyup', () => {
   xhrSend();
 });
 
+function selectThis() {
+    renderDetails(sugestions[this.emojiIndex]);
+}
+
 function renderAutocomplete() {
   let div;
   const list = document.getElementById('suggestion');
@@ -31,6 +36,8 @@ function renderAutocomplete() {
   list.textContent = '';
   sugestions.forEach((sug, idx) => {
     div = document.createElement('li');
+    div.emojiIndex = idx;
+    div.onmousedown = selectThis;
     div.textContent = `${sugestions[idx].char} ${sugestions[idx].name}`;
     if (selected === idx) div.classList.add('active');
     list.appendChild(div);
