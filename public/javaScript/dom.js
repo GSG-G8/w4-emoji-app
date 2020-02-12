@@ -37,4 +37,18 @@ function renderAutocomplete() {
   });
 }
 
-renderAutocomplete();
+const detailsPreview = document.getElementById('preview');
+const detailsName = document.getElementById('details-name');
+const detailsCode = document.getElementById('details-code');
+const detailsCategory = document.getElementById('details-category');
+const detailsGroup = document.getElementById('details-group');
+const detailsSubgroup = document.getElementById('details-subgroup');
+
+function renderDetails(obj) {
+  detailsPreview.textContent = obj.char;
+  detailsName.textContent = obj.name;
+  detailsCode.textContent = obj.codes;
+  detailsCategory.textContent = obj.category;
+  detailsGroup.textContent = obj.group;
+  detailsSubgroup.textContent = obj.subgroup;
+}
