@@ -11,7 +11,7 @@ module.exports = (request, response, keywords) => {
       response.end(error);
     } else {
       emojiArray = JSON.parse(file);
-      const search = keywords.split('20%').map((e) => e.toLowerCase());
+      const search = keywords.split('%20').map((e) => e.toLowerCase());
       const results = emojiArray.filter((e) => (
         search.some((k) => e.name.toLowerCase().includes(k))
       )).slice(0, 10);
