@@ -1,15 +1,23 @@
-const homehandle = require('./handelers/homehandle');
-const publichandle = require('./handelers/publichandle');
+const path = require('path');
+const searchHandle = require('./handelers/searchHandle');
+const publicHandle = require('./handelers/publichandle');
 
-module.exports = (req, res) => {
-  const endpoint = req.url;
+const PORT = process.env.PORT || 4000;
+const HOST = process.env.HOST || 'localhost';
 
-  if (endpoint === '/') {
-    homehandle(res);
-  } else if (endpoint.includes('public')) {
-    publichandle(req, res);
+module.exports = (request, response) => {
+  let endpoint = request.url.split('/').filter((e) => e !== '');
+  if (endpoint.length === 0) endpoint = ['public', 'index.html'];
+  const filePath = path.join(__dirname, '..', ...endpoint);
+  const fileName = endpoint[endpoint.length - 1];
+  const fileExt = fileName.split('.').pop().toLowerCase();
+
+  if (endpoint[0] === 'public') {
+    publicHandle(request, response, filePath, fileExt);
+  } else if (endpoint[0] === 'search') {
+    searchHandle(request, response, endpoint[1]);
   } else {
-    res.writeHead(500, { 'Conten-Type': 'text/html' });
-    res.end('<h1 style="color:black; font-weight:bold; border:2px solid #20ff; padding:20px; margin:20%; text-align:center;"> Error From Server  <span style="color:red;">500</span></h1>');
+    response.writeHead(500, { 'Conten-Type': 'text/html' });
+    response.end(`<h1 style='color:black; font-weight:bold; border:2px solid #20ff; padding:20px; margin:20%; text-align:center;'> Error From Server  <span style='color:red;'>500</span> <p><a href=\'http://${HOST}:${PORT}\' style='background-color: #2D65C9; padding:5px; border: 1px solid black; border-radius:10px; cursor: pointer; text-decoration: none; color:black;'>back To Home</a></h1>`);
   }
 };
