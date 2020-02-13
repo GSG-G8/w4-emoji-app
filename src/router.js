@@ -1,10 +1,7 @@
 const path = require('path');
-const fs = require('fs');
 const searchHandle = require('./handelers/searchHandle');
 const publicHandle = require('./handelers/publichandle');
 
-const PORT = process.env.PORT || 4000;
-const HOST = process.env.HOST || 'localhost';
 
 module.exports = (request, response) => {
   let endpoint = request.url.split('/').filter((e) => e !== '');

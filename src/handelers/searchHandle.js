@@ -17,6 +17,7 @@ module.exports = (request, response, keywords) => {
       } else {
         const search = keywords.split('%20').map((e) => e.toLowerCase());
         results = emojiArray.filter((e) => (
+          !e.name.includes("skin") &&
           search.some((k) => e.name.toLowerCase().includes(k))
         )).slice(0, 10);
       }
