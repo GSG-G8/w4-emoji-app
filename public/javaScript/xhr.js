@@ -7,6 +7,8 @@ function xhrSend() {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           sugestions = JSON.parse(xhr.responseText);
+          suggestionsCount = sugestions.length;
+          selected = 0;
           renderAutocomplete();
         } else if (xhr.status === 404) {
           console.log('xhr error');

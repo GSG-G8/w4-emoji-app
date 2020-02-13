@@ -1,6 +1,6 @@
 
 let selected = 0;
-let suggestionsCount = 6;
+let suggestionsCount = 10;
 let sugestions = [];
 
 const input = document.getElementById('search-input');
@@ -12,7 +12,7 @@ input.addEventListener('keydown', (evn) => {
     } else {
       selected = (selected + suggestionsCount - 1) % suggestionsCount;
     }
-    //input.value = sugestions[selected].name;
+    renderAutocomplete();
     evn.preventDefault();
   } else if (evn.key === 'Enter') {
     renderDetails(sugestions[selected]);
@@ -58,4 +58,16 @@ function renderDetails(obj) {
   detailsCategory.textContent = obj.category;
   detailsGroup.textContent = obj.group;
   detailsSubgroup.textContent = obj.subgroup;
+}
+const copyToClipboard = str => {
+  const el = document.createElement('textarea');
+  el.value = str;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+};
+document.getElementById('btn-copy').onclick = function () {
+  const text = document.getElementById('preview').textContent;
+  copyToClipboard(text);
 }
