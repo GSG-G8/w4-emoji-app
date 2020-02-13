@@ -101,6 +101,7 @@ main {
 }
 
 #btn-copy {
+    position: relative;
     color: #fff;
     background-color: #07a;
     background: linear-gradient(#19f, #059);
@@ -109,6 +110,48 @@ main {
     font-weight: bold;
     padding: 2vmin;
     border-radius: 1vmin;
+}
+#btn-copy:after {
+    content: "copied";
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    padding: 1vmin;
+    border-radius: 1vmin;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    
+}
+
+#btn-copy:focus {
+    outline: none;
+}
+
+#btn-copy:after {
+    opacity: 0;
+    animation: none;
+}
+
+#btn-copy:focus:after {
+    animation: copy-effect 1s;
+}
+
+@keyframes copy-effect {
+    0% {
+        opacity: 0;
+        top: 0;
+        left: 0;
+    }
+    50% {
+        opacity: 1;
+        top: -7vmin;
+        left: -1vmin;
+    }
+    100% {
+        opacity: 0;
+        top: -7vmin;
+        left: -1vmin;
+    }
 }
 
 #suggestion {
@@ -180,7 +223,7 @@ main {
     }
 }
 
-.h1-404{
+.error-page__text{
     color:black;
     font-weight:bold;
     border:2px solid #20ff;
