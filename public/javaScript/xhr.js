@@ -1,7 +1,7 @@
-let searchText = '';
+
 function xhrSend() {
   let newText = input.value.replace(/\s+/g, ' ').trim();
-  if (newText !== searchText) {
+  if (newText !== '') {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
@@ -17,6 +17,5 @@ function xhrSend() {
     };
     xhr.open('GET', `/search/${newText}`);
     xhr.send();
-    searchText = newText;
   }
 }
